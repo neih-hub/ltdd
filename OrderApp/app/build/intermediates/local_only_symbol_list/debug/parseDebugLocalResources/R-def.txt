@@ -1,0 +1,15 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color green_200
+color green_500
+color green_700
+color light_green_200
+color light_green_700
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.OrderApp
