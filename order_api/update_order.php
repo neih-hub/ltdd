@@ -14,7 +14,7 @@ if (isset($data->id) && isset($data->customer_name) && isset($data->phone_number
     $total_price   = $conn->real_escape_string($data->total_price);
     $status        = $conn->real_escape_string($data->status);
 
-    $sql = "UPDATE `Order`
+    $sql = "UPDATE `orders`
             SET customer_name='$customer_name', phone_number='$phone_number', total_price='$total_price', status='$status'
             WHERE id=$id";
 

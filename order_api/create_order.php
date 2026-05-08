@@ -13,7 +13,7 @@ if (isset($data->customer_name) && isset($data->phone_number) && isset($data->to
     $total_price   = $conn->real_escape_string($data->total_price);
     $status        = $conn->real_escape_string($data->status);
 
-    $sql = "INSERT INTO `Order` (customer_name, phone_number, total_price, status)
+    $sql = "INSERT INTO `orders` (customer_name, phone_number, total_price, status)
             VALUES ('$customer_name', '$phone_number', '$total_price', '$status')";
 
     if ($conn->query($sql) === TRUE) {

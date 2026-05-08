@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 header("Access-Control-Allow-Origin: *");
 include 'db.php';
 
-$sql = "SELECT * FROM `Order`";
+$sql = "SELECT * FROM `orders`";
 $result = $conn->query($sql);
 
 $orders = array();

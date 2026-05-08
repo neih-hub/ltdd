@@ -9,7 +9,7 @@ $data = json_decode(file_get_contents("php://input"));
 
 if (isset($data->id)) {
     $id  = $conn->real_escape_string($data->id);
-    $sql = "DELETE FROM `Order` WHERE id=$id";
+    $sql = "DELETE FROM `orders` WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["message" => "Order deleted successfully"]);

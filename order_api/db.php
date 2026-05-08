@@ -3,10 +3,10 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 
-$host = "127.0.0.1:3307";
+$host = "127.0.0.1";
 $user = "root";
 $pass = "";
-$db_name = "OrderDB";
+$db_name = "orderdb";
 
 $conn = new mysqli($host, $user, $pass, $db_name);
 
