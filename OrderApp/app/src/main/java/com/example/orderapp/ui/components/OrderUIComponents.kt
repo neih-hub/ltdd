@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -16,6 +17,43 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.orderapp.model.Order
+
+val statusOptions = listOf("Pending", "Completed", "Cancelled")
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun StatusDropdown(selected: String, onSelected: (String) -> Unit) {
+    var expanded by remember { mutableStateOf(false) }
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = !expanded }
+    ) {
+        OutlinedTextField(
+            value = selected,
+            onValueChange = {},
+            readOnly = true,
+            label = { Text("Trạng Thái") },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .menuAnchor()
+        )
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            statusOptions.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = {
+                        onSelected(option)
+                        expanded = false
+                    }
+                )
+            }
+        }
+    }
+}
 
 @Composable
 fun MainScreenUI(
@@ -174,13 +212,7 @@ fun AddNewScreenUI(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
-            OutlinedTextField(
-                value = status,
-                onValueChange = { status = it },
-                label = { Text("Trạng Thái (Pending / Completed / Cancelled)") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
+            StatusDropdown(selected = status, onSelected = { status = it })
 
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -280,13 +312,7 @@ fun UpdateScreenUI(
                 modifier = Modifier.fillMaxWidth(),
                 singleLine = true
             )
-            OutlinedTextField(
-                value = status,
-                onValueChange = { status = it },
-                label = { Text("Trạng Thái") },
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true
-            )
+            StatusDropdown(selected = status, onSelected = { status = it })
 
             Spacer(modifier = Modifier.height(8.dp))
 

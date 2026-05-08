@@ -10,15 +10,15 @@ data class ApiResponse(val message: String)
 
 interface ApiService {
 
-    @GET("order_api/get_orders.php")
+    @GET("get_orders.php")
     fun getOrders(): Call<List<Order>>
 
-    @POST("order_api/create_order.php")
+    @POST("create_order.php")
     fun createOrder(@Body order: Order): Call<ApiResponse>
 
-    @POST("order_api/update_order.php")
+    @POST("update_order.php")
     fun updateOrder(@Body order: Order): Call<ApiResponse>
 
-    @POST("order_api/delete_order.php")
+    @POST("delete_order.php")
     fun deleteOrder(@Body order: Order): Call<ApiResponse>
 }
